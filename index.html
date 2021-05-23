@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS TABS</title>
+    <style>
+        body {
+            background: rgb(17, 8, 46);
+        }
+        .tabs {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+        .tabs__content {
+            border: 5px solid rgb(17, 163, 151);
+        }
+        .tabs__nav {
+            margin-bottom: 50px;
+        }
+        .tabs__item {
+            display: none;
+            background: white;
+            color: grey;
+            padding: 50px 50px;
+        }
+        .tabs__item.active {
+            display: block;
+        }
+        .tabs__nav-btn {
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background:rgb(17, 163, 151);
+            color: white;
+            cursor: pointer;
+        }
+        .tabs__nav-btn.active {
+            background: goldenrod;
+        }
+        img {
+            width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="tabs">
+        <div class="tabs__nav">
+            <button class="tabs__nav-btn" type="button" data-tab="#tab-1">Item 1</button>
+            <button class="tabs__nav-btn" type="button" data-tab="#tab-2">Item 2</button>
+            <button class="tabs__nav-btn" type="button" data-tab="#tab-3">Item 3</button>
+        </div>
+
+        <div class="tabs__content">
+            <div class="tabs__item" id="tab-1">
+                <img src="https://upload.wikimedia.org/wikipedia/uk/9/95/%D0%9C%D0%BE%D1%97_%D0%B4%D1%83%D0%BC%D0%BA%D0%B8_%D1%82%D0%B8%D1%85%D1%96.jpg" alt="Мої думки тихі">
+                <p>«Мої думки тихі»  — українська трагікомедія українського режисера Антоніо Лукіча 2019 року для якого вона стала дебютною повнометражною художньою стрічкою. За сценарієм, що створювався більше двох років, молодий звукорежисер і невдаха Вадим отримує замовлення записати голоси рідкісних тварин та пташок. У подорож Закарпаттям разом із Вадимом вирушає мати-таксистка, навчаючи його життя та постійно створюючи цим проблеми й комічні ситуації.</p>
+            </div>
+            <div class="tabs__item" id="tab-2">
+                <img src="https://kinoukr.com/uploads/posts/2020-06/1591521917_poster.jpg" alt="Наші котики">
+                <p>«Наші Котики», повна назва «Наші котики або Як ми полюбили лопати в умовах обмеженої антитерористичної операції з елементами тимчасового воєнного стану», робочі назви «Бліндаж», «Котик з палаючими очима» (англ. Lethal Kittens) — копродукційний український комедійний фільм режисера Володимира Тихого про пригоди у 2014 році бійців української армії під час Російсько-української війни на Сході України.</p>
+            </div>
+            <div class="tabs__item" id="tab-3">
+                <img src="https://kino-teatr.ua/public/main/films/2020-04/x4_poster_5e8c18910a76c.jpg" alt="Атлантида">
+                <p>Атлантида — український фільм режисера Валентина Васяновича. Фільм переміг на Венеційському кінофестивалі у програмі «Горизонти» (іт. «Orizzonti»)[1].[2]. Ролі у фільмі зіграли лише непрофесійні актори — ветерани АТО, волонтери, солдати ЗСУ[3]. Одну з головних ролей зіграв Андрій Римарук[4] — колишній розвідник, який пройшов війну на Донбасі і зараз працює у фонді «Повернись живим». Також знімались парамедик Людмила Білека та доброволець Василь Антоняк. Зйомки стрічки відбувалися здебільшого в Маріуполі в січні-березні 2018 року[5].</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabsBtn = document.querySelectorAll('.tabs__nav-btn');
+        const tabsItems = document.querySelectorAll('.tabs__item');
+
+        tabsBtn.forEach(function(item) {
+            item.addEventListener('click', function() {
+               let currentBtn = item;
+               let tabId = currentBtn.getAttribute('data-tab');
+               let currentTab = document.querySelector(tabId);
+
+               if(!currentBtn.classList.contains('active')) {
+                tabsBtn.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                tabsItems.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                    currentBtn.classList.add('active');
+                    currentTab.classList.add('active');
+                } 
+            });
+        });
+        
+        document.querySelector('.tabs__nav-btn:nth-child(2)').click();
+
+       /*  const tabsBtn = document.querySelectorAll('.tabs__nav-btn');
+        const tabsItems = document.querySelectorAll('.tabs__item');
+
+        function onTabClick(item) {
+            item.addEventListener('click', function() {
+               let currentBtn = item;
+               let tabId = currentBtn.getAttribute('data-tab');
+               let currentTab = document.querySelector(tabId);
+
+               if(!currentBtn.classList.contains('active')) {
+                tabsBtn.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                tabsItems.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+                    currentBtn.classList.add('active');
+                    currentTab.classList.add('active');
+                } 
+            });
+        };
+
+        tabsBtn.forEach(onTabClick);
+
+        document.querySelector('.tabs__nav-btn:nth-child(2)').click(); */
+    </script>
+</body>
+</html>
